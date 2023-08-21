@@ -1,0 +1,16 @@
+-r requirements.txt
+
+freezegun
+ipdb
+ipython
+moto
+pre-commit
+flake8==6.0.0
+black==23.7.0
+isort==5.12.0
+pytest
+pytest-asyncio
+pytest-cov
+pytest-freezegun
+pytest-httpx
+pytest-mock

@@ -1,0 +1,41 @@
+version: '3.7'
+
+services:
+  app_financial_investment:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    volumes:
+      - .:/app
+    env_file:
+      - .env
+    ports:
+      - "8010:8010"
+    depends_on:
+      - db_financial_investment
+    networks:
+      - backend_financial_investment
+    container_name: app_financial_investment
+    restart: unless-stopped
+
+  db_financial_investment:
+    container_name: db_financial_investment
+    image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: financial_investment_db
+      MYSQL_USER: user
+      MYSQL_PASSWORD: user_password
+    ports:
+      - "3306:3306"
+    networks:
+      - backend_financial_investment
+    volumes:
+      - mysql_financial_investment:/var/lib/mysql
+    restart: on-failure
+
+networks:
+  backend_financial_investment:
+
+volumes:
+  mysql_financial_investment:
