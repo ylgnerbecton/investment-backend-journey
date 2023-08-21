@@ -42,7 +42,7 @@ def assert_all_responses_were_requested() -> bool:
 
 @pytest.fixture(scope="module")
 def test_app(settings):
-    app = FastAPI(root_path=settings.API_ROOT_PATH)
+    app = FastAPI(root_path="")
     app.include_router(health_check_router)
     app.include_router(AssetView().get_router())
     app.include_router(UserView().get_router())

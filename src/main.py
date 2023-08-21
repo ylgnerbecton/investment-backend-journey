@@ -29,7 +29,7 @@ logger = logging.getLogger(__name__)
 
 
 def create_app() -> FastAPI:
-    application = FastAPI(root_path=settings.API_ROOT_PATH)
+    application = FastAPI(root_path="")
     application.state = type("", (), {})()
     application.state.limiter = Limiter(key_func=get_remote_address)
 
